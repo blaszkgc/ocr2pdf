@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="OCR2PDF/OCR2PDF.csproj" />
+  <Project Path="Verification/Verification.csproj" />
+</Solution>

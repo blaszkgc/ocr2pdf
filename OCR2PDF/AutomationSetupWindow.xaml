@@ -1,0 +1,20 @@
+<Window x:Class="OCR2PDF.AutomationSetupWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Automated snipping" Width="440" SizeToContent="Height" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" FontFamily="Segoe UI" FontSize="13" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+  <StackPanel Margin="22">
+    <TextBlock Text="Automated snipping" FontSize="21" FontWeight="SemiBold"/>
+    <TextBlock Text="Capture the current page first, then advance between captures. After setup, select the snipping region and the action location." TextWrapping="Wrap" Margin="0,10,0,16"/>
+    <Label Content="Advance using" Target="{Binding ElementName=Mode}"/>
+    <ComboBox x:Name="Mode" SelectedIndex="0" SelectionChanged="Mode_Changed" Padding="8" AutomationProperties.Name="Advance mode"><ComboBoxItem Content="Click a button"/><ComboBoxItem Content="Scroll"/><ComboBoxItem Content="Press a key"/></ComboBox>
+    <StackPanel x:Name="ScrollOptions" Visibility="Collapsed" Margin="0,10,0,0">
+      <Label Content="Scroll direction"/><ComboBox x:Name="Direction" SelectedIndex="0" Padding="8"><ComboBoxItem Content="Down"/><ComboBoxItem Content="Up"/></ComboBox>
+      <Label Content="Wheel notches per step" Target="{Binding ElementName=Notches}"/><TextBox x:Name="Notches" Text="3" Padding="8"/>
+    </StackPanel>
+    <StackPanel x:Name="KeyOptions" Visibility="Collapsed" Margin="0,10,0,0">
+      <Label Content="Navigation key" Target="{Binding ElementName=NavigationKey}"/><ComboBox x:Name="NavigationKey" Padding="8" AutomationProperties.Name="Navigation key"/>
+    </StackPanel>
+    <Label Content="Number of captures (including current page)" Target="{Binding ElementName=Count}" Margin="0,10,0,0"/><TextBox x:Name="Count" Text="10" Padding="8"/>
+    <Label Content="Wait after advancing (seconds)" Target="{Binding ElementName=Wait}" Margin="0,10,0,0"/><TextBox x:Name="Wait" Text="1.5" Padding="8"/>
+    <TextBlock Text="A 3-second countdown lets you focus the target app. Press Esc anywhere or use Stop to end the run. Captures are added to your page list for review and export." TextWrapping="Wrap" Margin="0,18,0,10"/>
+    <TextBlock x:Name="Error" TextWrapping="Wrap" AutomationProperties.LiveSetting="Polite"/>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0"><Button Content="Cancel" IsCancel="True" Padding="14,8" Margin="0,0,8,0"/><Button Content="Select region…" Click="Start_Click" IsDefault="True" Padding="14,8"/></StackPanel>
+  </StackPanel>
+</Window>
